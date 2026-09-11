@@ -14,9 +14,11 @@
   "packageManager": "npm@11.13.0",
   "dependencies": {
     "@vinext/cloudflare": "latest",
+    "clsx": "^2.1.1",
     "react": "latest",
     "react-dom": "latest",
     "react-server-dom-webpack": "latest",
+    "tailwind-merge": "^3.6.0",
     "vinext": "latest"
   },
   "devDependencies": {
