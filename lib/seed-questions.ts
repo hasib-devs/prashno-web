@@ -1,0 +1,28 @@
+import type { Question } from "./question-types";
+
+export const SEED_QUESTIONS: Question[] = [
+  { id: "math-01", stem: "৫ + ৭ = কত?", options: ["১০", "১১", "১২", "১৩"], correctIndex: 2, subject: "গণিত", chapter: "অধ্যায় ১", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "math-02", stem: "১২ × ৮ = কত?", options: ["৮৪", "৯৬", "১০৪", "১০৮"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ১", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "math-03", stem: "একটি ত্রিভুজের কোণগুলোর সমষ্টি কত ডিগ্রি?", options: ["৯০°", "১৮০°", "২৭০°", "৩৬০°"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ২", classLevel: "সপ্তম", marks: 1 },
+  { id: "math-04", stem: "৩² এর মান কত?", options: ["৬", "৯", "১২", "২৭"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ২", classLevel: "সপ্তম", marks: 1 },
+  { id: "math-05", stem: "x + ৫ = ১২ হলে x = কত?", options: ["৫", "৬", "৭", "৮"], correctIndex: 2, subject: "গণিত", chapter: "অধ্যায় ৩", classLevel: "অষ্টম", marks: 1 },
+  { id: "math-06", stem: "২০ এর ২৫% কত?", options: ["৪", "৫", "৬", "৮"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ৩", classLevel: "অষ্টম", marks: 1 },
+  { id: "math-07", stem: "বৃত্তের পরিধি নির্ণয়ের সূত্র কোনটি?", options: ["πr²", "2πr", "πd²", "4πr"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ৪", classLevel: "অষ্টম", marks: 1 },
+  { id: "math-08", stem: "১ থেকে ১০ পর্যন্ত মৌলিক সংখ্যা কয়টি?", options: ["৩", "৪", "৫", "৬"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ১", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "math-09", stem: "গ.সা.গু. এর পূর্ণরূপ কী?", options: ["গরিষ্ঠ সাধারণ গুণনীয়ক", "গরিষ্ঠ সাধারণ গুণিতক", "লঘিষ্ঠ সাধারণ গুণনীয়ক", "কোনোটিই নয়"], correctIndex: 0, subject: "গণিত", chapter: "অধ্যায় ৪", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "math-10", stem: "একটি বর্গের প্রতিটি কোণ কত ডিগ্রি?", options: ["৬০°", "৯০°", "১২০°", "১৮০°"], correctIndex: 1, subject: "গণিত", chapter: "অধ্যায় ২", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "sci-01", stem: "পানির রাসায়নিক সংকেত কোনটি?", options: ["CO₂", "O₂", "H₂O", "NaCl"], correctIndex: 2, subject: "বিজ্ঞান", chapter: "অধ্যায় ১", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "sci-02", stem: "সালোকসংশ্লেষণ কোথায় ঘটে?", options: ["মূলে", "কাণ্ডে", "পাতায়", "ফুলে"], correctIndex: 2, subject: "বিজ্ঞান", chapter: "অধ্যায় ২", classLevel: "সপ্তম", marks: 1 },
+  { id: "sci-03", stem: "মানবদেহে হাড়ের সংখ্যা কত?", options: ["১০৬", "২০৬", "৩০৬", "৪০৬"], correctIndex: 1, subject: "বিজ্ঞান", chapter: "অধ্যায় ২", classLevel: "সপ্তম", marks: 1 },
+  { id: "sci-04", stem: "বিদ্যুৎ প্রবাহের একক কী?", options: ["ভোল্ট", "অ্যাম্পিয়ার", "ওয়াট", "ওহম"], correctIndex: 1, subject: "বিজ্ঞান", chapter: "অধ্যায় ৩", classLevel: "অষ্টম", marks: 1 },
+  { id: "sci-05", stem: "পৃথিবীর নিকটতম গ্রহ কোনটি?", options: ["মঙ্গল", "বুধ", "শুক্র", "বৃহস্পতি"], correctIndex: 2, subject: "বিজ্ঞান", chapter: "অধ্যায় ৩", classLevel: "অষ্টম", marks: 1 },
+  { id: "sci-06", stem: "অক্সিজেনের প্রতীক কোনটি?", options: ["O", "Ox", "Og", "On"], correctIndex: 0, subject: "বিজ্ঞান", chapter: "অধ্যায় ১", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "sci-07", stem: "রক্তের লাল রঙের কারণ কী?", options: ["শ্বেতকণিকা", "অণুচক্রিকা", "হিমোগ্লোবিন", "প্লাজমা"], correctIndex: 2, subject: "বিজ্ঞান", chapter: "অধ্যায় ৪", classLevel: "অষ্টম", marks: 1 },
+  { id: "sci-08", stem: "শব্দের বেগ সবচেয়ে বেশি কোথায়?", options: ["বায়ুতে", "পানিতে", "শূন্যে", "কঠিন পদার্থে"], correctIndex: 3, subject: "বিজ্ঞান", chapter: "অধ্যায় ৪", classLevel: "অষ্টম", marks: 1 },
+  { id: "eng-01", stem: "Choose the correct spelling.", options: ["Recieve", "Receive", "Riceive", "Receeve"], correctIndex: 1, subject: "ইংরেজি", chapter: "Chapter 1", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "eng-02", stem: "He ___ to school daily.", options: ["go", "goes", "going", "gone"], correctIndex: 1, subject: "ইংরেজি", chapter: "Chapter 1", classLevel: "ষষ্ঠ", marks: 1 },
+  { id: "eng-03", stem: "Synonym of 'happy'?", options: ["sad", "glad", "angry", "tired"], correctIndex: 1, subject: "ইংরেজি", chapter: "Chapter 2", classLevel: "সপ্তম", marks: 1 },
+  { id: "eng-04", stem: "Antonym of 'brave'?", options: ["bold", "coward", "hero", "strong"], correctIndex: 1, subject: "ইংরেজি", chapter: "Chapter 2", classLevel: "সপ্তম", marks: 1 },
+  { id: "eng-05", stem: "She has lived here ___ 2020.", options: ["for", "from", "since", "by"], correctIndex: 2, subject: "ইংরেজি", chapter: "Chapter 3", classLevel: "অষ্টম", marks: 1 },
+  { id: "eng-06", stem: "Passive of 'He writes a letter'?", options: ["A letter is written by him", "A letter was written by him", "A letter has been written", "He is written"], correctIndex: 0, subject: "ইংরেজি", chapter: "Chapter 3", classLevel: "অষ্টম", marks: 1 },
+];
