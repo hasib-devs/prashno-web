@@ -32,3 +32,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@media print {
+  aside, header { display: none !important; }
+  main { padding: 0 !important; }
+  .no-print { display: none !important; }
+  #paper-preview { border: none !important; box-shadow: none !important; }
+}
