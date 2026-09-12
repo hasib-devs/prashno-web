@@ -6,6 +6,7 @@ import Link from "next/link";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { getSession, clearSession } from "@/lib/auth";
+import { LogoMark } from "@/components/ui/logo";
 
 export function LandingNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,10 +21,10 @@ export function LandingNav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-[var(--neutral-200)] bg-[var(--surface)]/80 backdrop-blur">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8">
-        <a href="/" className="flex items-center gap-2 text-lg font-bold text-[var(--neutral-950)]">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] text-sm font-bold text-white">প</span>
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-[var(--neutral-950)]">
+          <LogoMark size={32} />
           {SITE_NAME}
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (

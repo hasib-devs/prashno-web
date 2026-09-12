@@ -3,6 +3,7 @@
 import { cn } from "@/lib/cn";
 import { useState } from "react";
 import { clearSession } from "@/lib/auth";
+import { LogoMark } from "@/components/ui/logo";
 
 const navItems = [
   { href: "/dashboard", label: "ড্যাশবোর্ড", icon: "🏠" },
@@ -32,12 +33,14 @@ export function DashboardSidebar() {
       <div className="flex h-16 items-center justify-between border-b border-[var(--neutral-200)] px-4">
         {!collapsed && (
           <span className="flex items-center gap-2 text-lg font-bold text-[var(--neutral-950)]">
-            <span className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] text-sm font-bold text-white">প</span>
+            <LogoMark size={32} />
             PrashnoKotha
           </span>
         )}
         {collapsed && (
-          <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] text-sm font-bold text-white">প</span>
+          <span className="mx-auto">
+            <LogoMark size={32} />
+          </span>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}

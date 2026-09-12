@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { LogoWithText } from "@/components/ui/logo";
 import { createUser, getUsers, createSession } from "@/lib/auth";
 
 export default function SignupPage() {
@@ -47,10 +48,9 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-[var(--neutral-50)] px-4">
       <Card className="w-full max-w-md">
         <div className="mb-6 text-center">
-          <Link href="/" className="inline-flex items-center gap-2 text-lg font-bold text-[var(--neutral-950)]">
-            <span className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] text-sm font-bold text-white">প</span>
-            PrashnoKotha
-          </Link>
+          <div className="inline-block">
+            <LogoWithText />
+          </div>
           <h1 className="mt-4 text-2xl font-bold text-[var(--neutral-950)]">সাইন আপ করুন</h1>
           <p className="mt-1 text-sm text-[var(--neutral-600)]">
             বিনামূল্যে শুরু করুন
