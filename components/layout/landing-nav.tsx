@@ -2,11 +2,20 @@
 
 import { cn } from "@/lib/cn";
 import { useState } from "react";
+import Link from "next/link";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
+import { getSession, clearSession } from "@/lib/auth";
 
 export function LandingNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const session = typeof window !== "undefined" ? getSession() : null;
+  const [loggedIn, setLoggedIn] = useState(!!session);
+
+  const handleLogout = () => {
+    clearSession();
+    setLoggedIn(false);
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-[var(--neutral-200)] bg-[var(--surface)]/80 backdrop-blur">
@@ -29,8 +38,34 @@ export function LandingNav() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" size="sm">লগইন</Button>
-          <Button size="sm">শুরু করুন</Button>
+          {loggedIn ? (
+            <>
+              <span className="text-sm font-medium text-[var(--neutral-600)]">
+                {getSession()?.name}
+              </span>
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--neutral-200)] bg-white px-3 py-1.5 text-sm font-semibold text-[var(--neutral-900)] transition-colors hover:bg-[var(--neutral-100)]"
+              >
+                ড্যাশবোর্ড
+              </Link>
+              <Button variant="ghost" size="sm" onClick={handleLogout}>
+                লগআউট
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] bg-transparent px-3 py-1.5 text-sm font-semibold text-[var(--neutral-600)] transition-colors hover:bg-[var(--neutral-100)]"
+              >
+                লগইন
+              </Link>
+              <Button size="sm" onClick={() => (window.location.href = "/signup")}>
+                শুরু করুন
+              </Button>
+            </>
+          )}
         </div>
 
         <button
@@ -61,8 +96,31 @@ export function LandingNav() {
               </a>
             ))}
             <div className="mt-2 flex flex-col gap-2">
-              <Button variant="secondary" size="sm">লগইন</Button>
-              <Button size="sm">শুরু করুন</Button>
+              {loggedIn ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="rounded-[var(--radius-md)] border border-[var(--neutral-200)] bg-white px-3 py-2 text-sm font-medium text-[var(--neutral-900)] hover:bg-[var(--neutral-100)]"
+                  >
+                    ড্যাশবোর্ড
+                  </Link>
+                  <Button variant="ghost" size="sm" onClick={handleLogout}>
+                    লগআউট
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="rounded-[var(--radius-md)] px-3 py-2 text-sm font-medium text-[var(--neutral-700)] hover:bg-[var(--neutral-100)]"
+                  >
+                    লগইন
+                  </Link>
+                  <Button size="sm" onClick={() => (window.location.href = "/signup")}>
+                    শুরু করুন
+                  </Button>
+                </>
+              )}
             </div>
           </nav>
         </div>

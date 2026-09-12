@@ -1,9 +1,17 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/data-display";
+import { getSession } from "@/lib/auth";
 
 export function DashboardTopBar() {
+  const [name, setName] = useState("শিক্ষক");
+
+  useEffect(() => {
+    const session = getSession();
+    if (session) setName(session.name);
+  }, []);
   return (
     <header className="flex h-16 items-center justify-between border-b border-[var(--neutral-200)] bg-[var(--surface)] px-6">
       <div className="flex items-center gap-4">
@@ -29,9 +37,9 @@ export function DashboardTopBar() {
         <div className="h-6 w-px bg-[var(--neutral-200)]"></div>
 
         <button className="flex items-center gap-2 rounded-[var(--radius-md)] px-2 py-1.5 hover:bg-[var(--neutral-100)]">
-          <Avatar fallback="ব" />
+          <Avatar fallback={name.charAt(0)} />
           <div className="hidden text-left lg:block">
-            <p className="text-sm font-medium text-[var(--neutral-900)]">বাবুল আক্তার</p>
+            <p className="text-sm font-medium text-[var(--neutral-900)]">{name}</p>
             <p className="text-xs text-[var(--neutral-500)]">শিক্ষক</p>
           </div>
         </button>

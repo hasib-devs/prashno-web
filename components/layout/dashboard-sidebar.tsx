@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/cn";
 import { useState } from "react";
+import { clearSession } from "@/lib/auth";
 
 const navItems = [
   { href: "/dashboard", label: "ড্যাশবোর্ড", icon: "🏠" },
@@ -15,6 +16,11 @@ const navItems = [
 
 export function DashboardSidebar() {
   const [collapsed, setCollapsed] = useState(false);
+
+  const handleLogout = () => {
+    clearSession();
+    window.location.href = "/";
+  };
 
   return (
     <aside
@@ -62,13 +68,13 @@ export function DashboardSidebar() {
       </nav>
 
       <div className="border-t border-[var(--neutral-200)] p-3">
-        <a
-          href="#"
-          className="flex items-center gap-3 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium text-[var(--neutral-600)] hover:bg-[var(--neutral-100)]"
+        <button
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium text-[var(--neutral-600)] hover:bg-[var(--neutral-100)]"
         >
-          <span className="text-lg">❓</span>
-          {!collapsed && <span>সাহায্য</span>}
-        </a>
+          <span className="text-lg">🚪</span>
+          {!collapsed && <span>লগআউট</span>}
+        </button>
       </div>
     </aside>
   );

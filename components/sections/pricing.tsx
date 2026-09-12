@@ -5,6 +5,7 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { formatBengaliCurrency } from "@/lib/utils";
+import { getSession } from "@/lib/auth";
 
 const plans = [
   {
@@ -123,7 +124,19 @@ export function PricingSection() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full" variant={plan.highlighted ? "primary" : "secondary"} size="lg">
+                <Button
+                  className="w-full"
+                  variant={plan.highlighted ? "primary" : "secondary"}
+                  size="lg"
+                  onClick={() => {
+                    const session = getSession();
+                    if (session) {
+                      window.location.href = "/dashboard";
+                    } else {
+                      window.location.href = "/signup";
+                    }
+                  }}
+                >
                   {plan.cta}
                 </Button>
               </CardFooter>

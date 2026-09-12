@@ -1,7 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
+import { getSession } from "@/lib/auth";
 
 export function HeroSection() {
+  const session = typeof window !== "undefined" ? getSession() : null;
+
   return (
     <Section className="pt-24 lg:pt-32">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -16,7 +21,9 @@ export function HeroSection() {
             বাংলাদেশের শিক্ষকদের জন্য সম্পূর্ণ বাংলায় তৈরি প্রশ্নব্যাংক, OMR মূল্যায়ন ও অনলাইন পরীক্ষা প্ল্যাটফর্ম।
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button size="lg">বিনামূল্যে শুরু করুন</Button>
+            <Button size="lg" onClick={() => (window.location.href = session ? "/dashboard" : "/signup")}>
+              বিনামূল্যে শুরু করুন
+            </Button>
             <Button variant="secondary" size="lg">ডেমো দেখুন</Button>
           </div>
           <div className="flex items-center gap-2 text-sm text-[var(--neutral-600)]">
