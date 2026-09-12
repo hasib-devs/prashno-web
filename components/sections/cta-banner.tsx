@@ -23,7 +23,12 @@ export function CTABanner() {
           >
             এখনই শুরু করুন
           </Button>
-          <Button variant="secondary" size="lg" className="border-white/30 bg-transparent text-white hover:bg-white/10">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="border-white/30 bg-transparent text-white hover:bg-white/10"
+            onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+          >
             ডেমো দেখুন
           </Button>
         </div>

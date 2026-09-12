@@ -24,7 +24,13 @@ export function HeroSection() {
             <Button size="lg" onClick={() => (window.location.href = session ? "/dashboard" : "/signup")}>
               বিনামূল্যে শুরু করুন
             </Button>
-            <Button variant="secondary" size="lg">ডেমো দেখুন</Button>
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              ডেমো দেখুন
+            </Button>
           </div>
           <div className="flex items-center gap-2 text-sm text-[var(--neutral-600)]">
             <span className="text-yellow-500">★★★★★</span>
