@@ -8,6 +8,8 @@ import { ExamTimer } from "@/components/exam/exam-timer";
 import { ExamQuestionCard } from "@/components/exam/exam-question-card";
 import { loadQuestions } from "@/lib/question-store";
 import { formatBengaliNumber } from "@/lib/utils";
+import { saveExamResult } from "@/lib/exam-result-store";
+import type { ExamResult } from "@/lib/exam-result-types";
 import type { Question } from "@/lib/question-types";
 
 type ExamState = "setup" | "active" | "result";
@@ -52,8 +54,41 @@ export default function ExamsPage() {
   };
 
   const finishExam = useCallback(() => {
+    const result: ExamResult = {
+      id: crypto.randomUUID(),
+      type: "online",
+      title: `অনলাইন পরীক্ষা — ${new Date().toLocaleDateString("bn-BD")}`,
+      timestamp: Date.now(),
+      totalQuestions: selectedQuestions.length,
+      correct: 0,
+      wrong: 0,
+      empty: 0,
+      percentage: 0,
+      durationSeconds: duration * 60 - secondsLeft,
+      questions: selectedQuestions.map((q) => {
+        const a = answers[q.id];
+        return {
+          id: q.id,
+          stem: q.stem,
+          subject: q.subject,
+          studentAnswer: a ?? null,
+          correctIndex: q.correctIndex,
+        };
+      }),
+    };
+    for (const q of selectedQuestions) {
+      const a = answers[q.id];
+      if (a === undefined || a === null) result.empty++;
+      else if (a === q.correctIndex) result.correct++;
+      else result.wrong++;
+    }
+    result.percentage =
+      selectedQuestions.length > 0
+        ? Math.round((result.correct / selectedQuestions.length) * 100)
+        : 0;
+    saveExamResult(result);
     setState("result");
-  }, []);
+  }, [answers, duration, secondsLeft, selectedQuestions]);
 
   // Timer
   useEffect(() => {

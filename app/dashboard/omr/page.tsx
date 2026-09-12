@@ -7,6 +7,8 @@ import { OMRAnswerSheet } from "@/components/omr/omr-answer-sheet";
 import { OMRResultRow } from "@/components/omr/omr-result-row";
 import { loadQuestions } from "@/lib/question-store";
 import { formatBengaliNumber } from "@/lib/utils";
+import { saveExamResult } from "@/lib/exam-result-store";
+import type { ExamResult } from "@/lib/exam-result-types";
 import type { Question } from "@/lib/question-types";
 
 type OMRState = "setup" | "answering" | "result";
@@ -48,6 +50,29 @@ export default function OMRPage() {
   };
 
   const finishExam = () => {
+    const result: ExamResult = {
+      id: crypto.randomUUID(),
+      type: "omr",
+      title: `OMR মূল্যায়ন — ${new Date().toLocaleDateString("bn-BD")}`,
+      timestamp: Date.now(),
+      totalQuestions: selectedQuestions.length,
+      correct: score.correct,
+      wrong: score.wrong,
+      empty: score.empty,
+      percentage:
+        selectedQuestions.length > 0
+          ? Math.round((score.correct / selectedQuestions.length) * 100)
+          : 0,
+      durationSeconds: 0,
+      questions: selectedQuestions.map((q) => ({
+        id: q.id,
+        stem: q.stem,
+        subject: q.subject,
+        studentAnswer: answers[q.id] ?? null,
+        correctIndex: q.correctIndex,
+      })),
+    };
+    saveExamResult(result);
     setState("result");
   };
 
