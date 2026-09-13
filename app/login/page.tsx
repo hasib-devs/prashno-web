@@ -11,8 +11,8 @@ import { validateCredentials, createSession } from "@/lib/auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("example@example.com");
+  const [password, setPassword] = useState("password123");
   const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,7 +41,9 @@ export default function LoginPage() {
           <div className="inline-block">
             <LogoWithText />
           </div>
-          <h1 className="mt-4 text-2xl font-bold text-[var(--neutral-950)]">লগইন করুন</h1>
+          <h1 className="mt-4 text-2xl font-bold text-[var(--neutral-950)]">
+            লগইন করুন
+          </h1>
           <p className="mt-1 text-sm text-[var(--neutral-600)]">
             আপনার অ্যাকাউন্টে প্রবেশ করুন
           </p>
@@ -62,9 +64,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && (
-            <p className="text-sm text-[var(--danger)]">{error}</p>
-          )}
+          {error && <p className="text-sm text-[var(--danger)]">{error}</p>}
           <Button type="submit" className="w-full">
             লগইন
           </Button>
@@ -72,7 +72,10 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-[var(--neutral-600)]">
           অ্যাকাউন্ট নেই?{" "}
-          <Link href="/signup" className="font-medium text-[var(--accent)] hover:underline">
+          <Link
+            href="/signup"
+            className="font-medium text-[var(--accent)] hover:underline"
+          >
             সাইন আপ করুন
           </Link>
         </p>

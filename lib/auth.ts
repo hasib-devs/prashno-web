@@ -33,11 +33,13 @@ export function validateCredentials(
   password: string
 ): User | null {
   const users = getUsers();
-  return (
-    users.find(
-      (u) => u.email === email.toLowerCase() && u.password === password
-    ) || null
-  );
+  const existing = users.find((u) => u.email === email.toLowerCase());
+  if (existing) {
+    return existing.password === password ? existing : null;
+  }
+  // Prototype mode: auto-create user on first login
+  const name = email.split("@")[0];
+  return createUser(name, email, password);
 }
 
 export function createSession(user: User): void {
